@@ -1,0 +1,445 @@
+[
+  {
+    "name": "add_decimal_exact",
+    "request": {
+      "operation": "add",
+      "a": "0.1",
+      "b": "0.2"
+    },
+    "status": "OK",
+    "result": "0.3"
+  },
+  {
+    "name": "subtract_negative",
+    "request": {
+      "operation": "subtract",
+      "a": "1.25",
+      "b": "2.5"
+    },
+    "status": "OK",
+    "result": "-1.25"
+  },
+  {
+    "name": "multiply_exact",
+    "request": {
+      "operation": "multiply",
+      "a": "1.20",
+      "b": "3"
+    },
+    "status": "OK",
+    "result": "3.6"
+  },
+  {
+    "name": "divide_terminating",
+    "request": {
+      "operation": "divide",
+      "a": "1",
+      "b": "8"
+    },
+    "status": "OK",
+    "result": "0.125"
+  },
+  {
+    "name": "divide_repeating_explicit",
+    "request": {
+      "operation": "divide",
+      "a": "1",
+      "b": "3",
+      "scale": 8,
+      "rounding": "HALF_EVEN"
+    },
+    "status": "OK",
+    "result": "0.33333333"
+  },
+  {
+    "name": "divide_repeating_without_policy",
+    "request": {
+      "operation": "divide",
+      "a": "1",
+      "b": "3"
+    },
+    "status": "INVALID_INPUT"
+  },
+  {
+    "name": "divide_zero",
+    "request": {
+      "operation": "divide",
+      "a": "1",
+      "b": "0"
+    },
+    "status": "DOMAIN_ERROR"
+  },
+  {
+    "name": "round_half_even_2_5",
+    "request": {
+      "operation": "round",
+      "value": "2.5",
+      "scale": 0,
+      "rounding": "HALF_EVEN"
+    },
+    "status": "OK",
+    "result": "2"
+  },
+  {
+    "name": "round_half_even_3_5",
+    "request": {
+      "operation": "round",
+      "value": "3.5",
+      "scale": 0,
+      "rounding": "HALF_EVEN"
+    },
+    "status": "OK",
+    "result": "4"
+  },
+  {
+    "name": "round_half_up_negative",
+    "request": {
+      "operation": "round",
+      "value": "-2.5",
+      "scale": 0,
+      "rounding": "HALF_UP"
+    },
+    "status": "OK",
+    "result": "-3"
+  },
+  {
+    "name": "absolute_difference",
+    "request": {
+      "operation": "absolute_difference",
+      "expected": "10",
+      "actual": "7.5"
+    },
+    "status": "OK",
+    "result": "2.5"
+  },
+  {
+    "name": "absolute_error",
+    "request": {
+      "operation": "absolute_error",
+      "expected": "10",
+      "actual": "7.5"
+    },
+    "status": "OK",
+    "result": "2.5"
+  },
+  {
+    "name": "relative_error_exact",
+    "request": {
+      "operation": "relative_error",
+      "expected": "4",
+      "actual": "5"
+    },
+    "status": "OK",
+    "result": "0.25"
+  },
+  {
+    "name": "relative_error_zero_expected",
+    "request": {
+      "operation": "relative_error",
+      "expected": "0",
+      "actual": "1"
+    },
+    "status": "DOMAIN_ERROR"
+  },
+  {
+    "name": "equal_within_absolute_true",
+    "request": {
+      "operation": "equal_within",
+      "expected": "100",
+      "actual": "100.4",
+      "absolute_tolerance": "0.5"
+    },
+    "status": "OK",
+    "result": true
+  },
+  {
+    "name": "equal_within_relative_true",
+    "request": {
+      "operation": "equal_within",
+      "expected": "100",
+      "actual": "100.5",
+      "relative_tolerance": "0.01"
+    },
+    "status": "OK",
+    "result": true
+  },
+  {
+    "name": "equal_within_false",
+    "request": {
+      "operation": "equal_within",
+      "expected": "100",
+      "actual": "102",
+      "absolute_tolerance": "1",
+      "relative_tolerance": "0.005"
+    },
+    "status": "OK",
+    "result": false
+  },
+  {
+    "name": "equal_within_no_tolerance",
+    "request": {
+      "operation": "equal_within",
+      "expected": "1",
+      "actual": "1"
+    },
+    "status": "INVALID_INPUT"
+  },
+  {
+    "name": "data_size_si",
+    "request": {
+      "operation": "convert_data_size",
+      "value": "1",
+      "from_unit": "MB",
+      "to_unit": "B"
+    },
+    "status": "OK",
+    "result": "1000000"
+  },
+  {
+    "name": "data_size_iec",
+    "request": {
+      "operation": "convert_data_size",
+      "value": "1",
+      "from_unit": "MiB",
+      "to_unit": "B"
+    },
+    "status": "OK",
+    "result": "1048576"
+  },
+  {
+    "name": "data_size_fraction",
+    "request": {
+      "operation": "convert_data_size",
+      "value": "1",
+      "from_unit": "B",
+      "to_unit": "kB"
+    },
+    "status": "OK",
+    "result": "0.001"
+  },
+  {
+    "name": "duration",
+    "request": {
+      "operation": "convert_duration",
+      "value": "2.5",
+      "from_unit": "hour",
+      "to_unit": "minute"
+    },
+    "status": "OK",
+    "result": "150"
+  },
+  {
+    "name": "ratio_percent",
+    "request": {
+      "operation": "convert_ratio",
+      "value": "1",
+      "from_unit": "percent",
+      "to_unit": "multiplier"
+    },
+    "status": "OK",
+    "result": "0.01"
+  },
+  {
+    "name": "ratio_basis_points",
+    "request": {
+      "operation": "convert_ratio",
+      "value": "25",
+      "from_unit": "basis_points",
+      "to_unit": "percent"
+    },
+    "status": "OK",
+    "result": "0.25"
+  },
+  {
+    "name": "temperature_f_to_c_exact",
+    "request": {
+      "operation": "convert_temperature",
+      "value": "32",
+      "from_unit": "Fahrenheit",
+      "to_unit": "Celsius"
+    },
+    "status": "OK",
+    "result": "0"
+  },
+  {
+    "name": "temperature_f_to_c_repeating",
+    "request": {
+      "operation": "convert_temperature",
+      "value": "33",
+      "from_unit": "Fahrenheit",
+      "to_unit": "Celsius",
+      "scale": 4,
+      "rounding": "HALF_UP"
+    },
+    "status": "OK",
+    "result": "0.5556"
+  },
+  {
+    "name": "count_empty",
+    "request": {
+      "operation": "count",
+      "values": []
+    },
+    "status": "OK",
+    "result": 0
+  },
+  {
+    "name": "sum",
+    "request": {
+      "operation": "sum",
+      "values": [
+        "0.1",
+        "0.2",
+        "0.3"
+      ]
+    },
+    "status": "OK",
+    "result": "0.6"
+  },
+  {
+    "name": "mean_exact",
+    "request": {
+      "operation": "mean",
+      "values": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "status": "OK",
+    "result": "2"
+  },
+  {
+    "name": "mean_repeating",
+    "request": {
+      "operation": "mean",
+      "values": [
+        "1",
+        "2",
+        "2"
+      ],
+      "scale": 4,
+      "rounding": "HALF_EVEN"
+    },
+    "status": "OK",
+    "result": "1.6667"
+  },
+  {
+    "name": "median_even",
+    "request": {
+      "operation": "median",
+      "values": [
+        "1",
+        "9",
+        "3",
+        "7"
+      ]
+    },
+    "status": "OK",
+    "result": "5"
+  },
+  {
+    "name": "stats_empty_mean",
+    "request": {
+      "operation": "mean",
+      "values": []
+    },
+    "status": "DOMAIN_ERROR"
+  },
+  {
+    "name": "factorial",
+    "request": {
+      "operation": "factorial",
+      "n": 10
+    },
+    "status": "OK",
+    "result": 3628800
+  },
+  {
+    "name": "ncr",
+    "request": {
+      "operation": "nCr",
+      "n": 52,
+      "r": 5
+    },
+    "status": "OK",
+    "result": 2598960
+  },
+  {
+    "name": "npr",
+    "request": {
+      "operation": "nPr",
+      "n": 5,
+      "r": 3
+    },
+    "status": "OK",
+    "result": 60
+  },
+  {
+    "name": "combinatorics_r_gt_n",
+    "request": {
+      "operation": "nCr",
+      "n": 3,
+      "r": 4
+    },
+    "status": "DOMAIN_ERROR"
+  },
+  {
+    "name": "float_rejected",
+    "request": {
+      "operation": "add",
+      "a": 0.1,
+      "b": "0.2"
+    },
+    "status": "INVALID_INPUT"
+  },
+  {
+    "name": "nan_rejected",
+    "request": {
+      "operation": "add",
+      "a": "NaN",
+      "b": "1"
+    },
+    "status": "INVALID_INPUT"
+  },
+  {
+    "name": "ambiguous_kb_rejected",
+    "request": {
+      "operation": "convert_data_size",
+      "value": "1",
+      "from_unit": "KB",
+      "to_unit": "B"
+    },
+    "status": "INVALID_INPUT"
+  },
+  {
+    "name": "multiply_large_identity_exact",
+    "request": {
+      "operation": "multiply",
+      "a": "99999999999999.999999999999999",
+      "b": "1"
+    },
+    "status": "OK",
+    "result": "99999999999999.999999999999999"
+  },
+  {
+    "name": "equal_within_large_boundary_false",
+    "request": {
+      "operation": "equal_within",
+      "expected": "0",
+      "actual": "10000000000000000000000000001",
+      "absolute_tolerance": "10000000000000000000000000000"
+    },
+    "status": "OK",
+    "result": false
+  },
+  {
+    "name": "abs_large_exact",
+    "request": {
+      "operation": "abs",
+      "value": "-99999999999999.999999999999999"
+    },
+    "status": "OK",
+    "result": "99999999999999.999999999999999"
+  }
+]
